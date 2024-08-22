@@ -1,7 +1,7 @@
 import logging
 import concurrent.futures
-from email_verifier.smtp_verifier import check_email
-from email_verifier.file_handler import read_emails, write_results
+from src.smtp_verifier import check_email
+from src.file_handler import read_emails, write_results
 
 
 def check_single_email(email, delay):

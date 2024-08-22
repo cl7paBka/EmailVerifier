@@ -1,7 +1,7 @@
 import os
 import logging
 import argparse
-from email_verifier.checker import process_emails, check_single_email
+from src.checker import process_emails, check_single_email
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 

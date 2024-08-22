@@ -3,7 +3,7 @@ import smtplib
 import time
 import logging
 import dns.resolver
-from email_verifier.config import B2C_PROVIDERS, from_address
+from src.config import B2C_PROVIDERS, from_address
 
 regex = r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$'
 domain_mx_records = {}
