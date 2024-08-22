@@ -6,6 +6,7 @@ import dns.resolver
 from email_verifier.config import B2C_PROVIDERS, from_address
 
 regex = r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$'
+domain_mx_records = {}
 
 
 def check_email(email, delay, suspicious_domains):
@@ -16,8 +17,13 @@ def check_email(email, delay, suspicious_domains):
     domain = email.split('@')[1]
 
     try:
-        records = dns.resolver.resolve(domain, 'MX')
-        mx_record = str(records[0].exchange)
+        if domain not in domain_mx_records: # 22.08.2024 fixed error: "Server ... answered The DNS OPERATION timed out."
+            records = dns.resolver.resolve(domain, 'MX')
+            mx_record = str(records[0].exchange)
+
+            domain_mx_records[domain] = mx_record
+
+        mx_record = domain_mx_records[domain]
 
         server = smtplib.SMTP()
         server.set_debuglevel(0)
