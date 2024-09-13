@@ -5,9 +5,30 @@ from src.checker import process_emails, check_single_email
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+def print_logo():
+    logo = f"""
+     /\_/\                   /\_/\ 
+    ( o.o )                 ( o.o )
+     > ^ <                   > ^ <
+    ###############################     
+    #-#                         #-#     
+    #  -#                     #-  #     
+    #    -#                 #-    #     
+    #      .#             #.      #     
+    #        .#         #.        #     
+    #          .#     #.          #     
+    #        -#  .# #.  #-        #     
+    #      ##             ##      #     
+    #   +#                   #+   #     
+    # ##                       ## #     
+    ###############################
+    """
+    print(logo)
+    return ''
+
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Email Verifier CLI Tool')
+    parser = argparse.ArgumentParser(description=f'{print_logo()}Email Verifier CLI Tool')
     parser.add_argument('input', nargs='?', default='input.txt', help='Path to the input file with email addresses')
     parser.add_argument('-o', '--output', default='validated_addresses.txt', help='Path to the output file for valid emails')
     parser.add_argument('-s', '--suspicious', default='suspicious_addresses.txt',
