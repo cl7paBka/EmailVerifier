@@ -16,13 +16,24 @@ likelihood of bounced emails and improving your email campaign efficiency.
 ## 🚀 Installation
 
 ### 1. **Clone the repository**:
-
+    
     git clone https://github.com/cl7paBka/EmailVerifier.git
     cd EmailVerifier
+    
 
+### 2. **Create and activate a virtual environment** (optional but recommended):
+    
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+
+### 3. **Install the required dependencies**:
+    
+    pip install -r requirements.txt
+    
 ## 🛠️ Usage
 
-[![Email-Verifier-h.png](https://i.postimg.cc/HsW4C8JL/Email-Verifier-h.png)](https://postimg.cc/Lh7ZtX3d)
+[![Email-Verifier-h.png](https://i.postimg.cc/brX4dHtk/Email-Verifier-h.png)](https://postimg.cc/5Y3sRzp2)
 
 You can use EmailVerifier to validate single or multiple email addresses. Below is a summary of the available
 command-line options:
@@ -34,20 +45,26 @@ command-line options:
 ### 1. **Verify a single email address**:
 
     python EV.py -e example@example.com
+[![Email-Verifier-1email.png](https://i.postimg.cc/MGvLDr01/Email-Verifier-1email.png)](https://postimg.cc/R3xGCdD0)
 
 ### 2. **Verify emails from a file, save valid and suspicious addresses to separate files**:
 
-    python EV.py '\path\to\your\input_file.txt' -o '\path\to\your\validated_adresses.txt' -s s'\path\to\your\suspicious_adresses.txt
+    python EV.py "\path\to\your\input_file.txt" -o "\path\to\your\validated_adresses.txt" -s s"\path\to\your\suspicious_adresses.txt
 
 ### 3. **Verify emails from a file with a delay of 2 seconds between requests using 8 threads for faster processing**:
 
-    python EV.py '\path\to\your\input_file.txt' -d 2 -t 8
+    python EV.py "\path\to\your\input_file.txt" -d 2 -t 8
 
 ### 4. **Verify emails from src/files/input.txt, save valid to src/files/validated_addresses.txt and suspicious to src/files/suspicious_addresses.txt**
 
     python EV.py 
 
-[![Email-Verifier-example.png](https://i.postimg.cc/Z5sXthVW/Email-Verifier-example.png)](https://postimg.cc/dhd5rgMF)
+[![Email-Verifier-example.png](https://i.postimg.cc/t420DxKG/Email-Verifier-example.png)](https://postimg.cc/sMQ0gvfT)
+
+### 5. **To stop program press CTRL+C"**
+
+[![Email-Verifier-CTRL-C.png](https://i.postimg.cc/rsJgcSC8/Email-Verifier-CTRL-C.png)](https://postimg.cc/8f7Lmf03)
+
 
 ## 📂 Project Structure
 
@@ -63,7 +80,8 @@ EmailVerifier/
 │   ├── checker.py            # Module to check and verify emails
 │   ├── config.py             # Configuration settings for the application
 │   ├── file_handler.py       # File handling utilities for input/output operations
-│   └── smtp_verifier.py      # Module for SMTP-based email verification
+│   ├── smtp_verifier.py      # Module for SMTP-based email verification
+│   └── utils.py              # Utility functions for various helper tasks   
 │
 ├── EV.py                     # Main entry point script to run the EmailVerifier
 │
