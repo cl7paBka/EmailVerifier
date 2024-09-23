@@ -1,6 +1,8 @@
 # 📧 EmailVerifier
 
-**EmailVerifier** is a Python-based tool designed to validate and verify email addresses by checking their syntax, domain, and SMTP status. It helps you ensure that the emails in your lists are valid and reachable, reducing the likelihood of bounced emails and improving your email campaign efficiency.
+**EmailVerifier** is a Python-based tool designed to validate and verify email addresses by checking their syntax,
+domain, and SMTP status. It helps you ensure that the emails in your lists are valid and reachable, reducing the
+likelihood of bounced emails and improving your email campaign efficiency.
 
 ## ✨ Features
 
@@ -14,60 +16,79 @@
 ## 🚀 Installation
 
 ### 1. **Clone the repository**:
-    
+
     git clone https://github.com/cl7paBka/EmailVerifier.git
     cd EmailVerifier
-    
-
-### 2. **Create and activate a virtual environment** (optional but recommended):
-    
-    python -m venv venv
-    source venv/bin/activate  # On Windows use venv\\Scripts\\activate
-
-
-### 3. **Install the required dependencies**:
-    
-    pip install -r requirements.txt
-    
 
 ## 🛠️ Usage
 
-You can use EmailVerifier to validate single or multiple email addresses. Below is a summary of the available command-line options:
+[![Email-Verifier-h.png](https://i.postimg.cc/HsW4C8JL/Email-Verifier-h.png)](https://postimg.cc/Lh7ZtX3d)
 
-    python main.py [-h] [-o OUTPUT] [-s SUSPICIOUS] [-d DELAY] [-t THREADS] [-e EMAIL] [input]
+You can use EmailVerifier to validate single or multiple email addresses. Below is a summary of the available
+command-line options:
 
+    python EV.py [-h] [-o OUTPUT] [-s SUSPICIOUS] [-d DELAY] [-t THREADS] [-e EMAIL] [input]
 
 ## 💡 Examples
 
 ### 1. **Verify a single email address**:
-    python main.py -e example@example.com
-    
 
-### 2. **Verify emails from a file and save valid emails to a file**:
-    python main.py input.txt -o valid_emails.txt
+    python EV.py -e example@example.com
 
+### 2. **Verify emails from a file, save valid and suspicious addresses to separate files**:
 
-### 3. **Verify emails from a file with a delay of 2 seconds between requests**:
-    python main.py input.txt -d 2
+    python EV.py '\path\to\your\input_file.txt' -o '\path\to\your\validated_adresses.txt' -s s'\path\to\your\suspicious_adresses.txt
 
+### 3. **Verify emails from a file with a delay of 2 seconds between requests using 8 threads for faster processing**:
 
-### 4. **Verify emails using 8 threads for faster processing**:
-    python main.py input.txt -t 8
+    python EV.py '\path\to\your\input_file.txt' -d 2 -t 8
 
+### 4. **Verify emails from src/files/input.txt, save valid to src/files/validated_addresses.txt and suspicious to src/files/suspicious_addresses.txt**
 
-### 5. **Save suspicious email addresses to a separate file**:
-    python main.py input.txt -s suspicious_emails.txt
+    python EV.py 
 
-
+[![Email-Verifier-example.png](https://i.postimg.cc/Z5sXthVW/Email-Verifier-example.png)](https://postimg.cc/dhd5rgMF)
 
 ## 📂 Project Structure
 
-- **main.py**: The entry point of the application.
-- **email_verifier/smtp_verifier.py**: Handles the SMTP verification logic.
-- **email_verifier/file_handler.py**: Manages file operations for reading emails from files.
-- **email_verifier/config.py**: Contains the configuration settings for the application.
-- **email_verifier/checker.py**: Core logic for validating email syntax and domain.
+```Bash
+EmailVerifier/
+│
+├── src/                      # Source folder containing core logic
+│   ├── files/                # Folder for input and output .txt files
+│   │   ├── input.txt         # Input file containing email addresses
+│   │   ├── suspicious_addresses.txt # Output file for suspicious email addresses
+│   │   └── validated_addresses.txt  # Output file for validated email addresses
+│   │
+│   ├── checker.py            # Module to check and verify emails
+│   ├── config.py             # Configuration settings for the application
+│   ├── file_handler.py       # File handling utilities for input/output operations
+│   └── smtp_verifier.py      # Module for SMTP-based email verification
+│
+├── EV.py                     # Main entry point script to run the EmailVerifier
+│
+└── README.md                 # Project overview, structure, and usage instructions
+```
 
+### 📚 Description of Key Components:
+
+- **src/files/**: This directory contains `.txt` files used as input and output for email addresses:
+    - `input.txt`: Contains the list of email addresses to be verified.
+    - `suspicious_addresses.txt`: Stores suspicious email addresses (e.g., from B2C providers).
+    - `validated_addresses.txt`: Stores successfully validated email addresses.
+
+- **src/checker.py**: Core logic for processing and verifying email addresses.
+
+- **src/config.py**: Stores configuration settings, such as delays between SMTP requests, thread counts, etc.
+
+- **src/file_handler.py**: Provides helper functions to read/write from/to files.
+
+- **src/smtp_verifier.py**: Handles SMTP verification of email addresses, connecting to mail servers to validate them.
+
+- **EV.py**: The main script to run the EmailVerifier tool, parsing command-line arguments and managing the flow of the
+  application.
+
+- **README.md**: The readme file contains a detailed project overview, instructions, and usage guidelines.
 
 ## 🤝 Contributing
 
