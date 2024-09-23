@@ -103,6 +103,8 @@ EmailVerifier/
 
 - **src/smtp_verifier.py**: Handles SMTP verification of email addresses, connecting to mail servers to validate them.
 
+- **src/utils.py**: Shows logo and colors words.
+
 - **EV.py**: The main script to run the EmailVerifier tool, parsing command-line arguments and managing the flow of the
   application.
 
