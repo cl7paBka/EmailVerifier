@@ -1,31 +1,11 @@
 import os
 import logging
 import argparse
+from colorama import Fore, init
 from src.checker import process_emails, check_single_email
+from src.utils import print_logo, colored
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-
-def print_logo():
-    logo = r"""
-     /\_/\                   /\_/\ 
-    ( o.o )                 ( o.o )
-     > ^ <                   > ^ <
-    ###############################     
-    #-#      EmailVerifier      #-#     
-    #  -#     by cl7paBka     #-  #     
-    #    -#                 #-    #     
-    #      .#             #.      #     
-    #        .#         #.        #     
-    #          .#     #.          #     
-    #        -#  .# #.  #-        #     
-    #      ##             ##      #     
-    #   +#                   #+   #     
-    # ##                       ## #     
-    ###############################
-    """
-    print(logo)
-    return ''
 
 
 def parse_args():
@@ -46,6 +26,7 @@ def parse_args():
 
 
 def run():
+    init(autoreset=True)
     try:
         args = parse_args()
 
@@ -61,7 +42,7 @@ def run():
             process_emails(args.input, args.output, args.suspicious, args.delay, args.threads)
 
     except KeyboardInterrupt:
-        logging.info("Program interrupted by user (Ctrl+C). Exiting...")
+        logging.info(f"Program interrupted by user {colored('Ctrl+C', Fore.RED)}. Exiting...")
         exit(0)
 
 
