@@ -9,7 +9,7 @@ regex = r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$'
 domain_mx_records = {}
 
 
-def check_email(email, delay, suspicious_domains):  # Посмотреть, что за suspicious domains
+def check_email(email, delay, suspicious_domains):
     if not re.match(regex, email):
         logging.error(f'Invalid syntax: {email}')
         return None, "Invalid syntax"
@@ -17,7 +17,7 @@ def check_email(email, delay, suspicious_domains):  # Посмотреть, чт
     domain = email.split('@')[1]
 
     try:
-        if domain not in domain_mx_records:  # 22.08.2024 fixed error: "Server ... answered The DNS OPERATION timed out."
+        if domain not in domain_mx_records:
             records = dns.resolver.resolve(domain, 'MX')
             mx_record = str(records[0].exchange)
 
