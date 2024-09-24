@@ -61,7 +61,7 @@ command-line options:
 
 [![Email-Verifier-example.png](https://i.postimg.cc/t420DxKG/Email-Verifier-example.png)](https://postimg.cc/sMQ0gvfT)
 
-### 5. **To stop program press CTRL+C"**
+### 5. **To stop program press "CTRL+C"**
 
 [![Email-Verifier-CTRL-C.png](https://i.postimg.cc/rsJgcSC8/Email-Verifier-CTRL-C.png)](https://postimg.cc/8f7Lmf03)
 
